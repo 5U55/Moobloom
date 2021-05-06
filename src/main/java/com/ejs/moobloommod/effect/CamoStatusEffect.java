@@ -1,7 +1,5 @@
 package com.ejs.moobloommod.effect;
 
-import com.ejs.moobloommod.renderer.MoobloomFlowerRender;
-
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
