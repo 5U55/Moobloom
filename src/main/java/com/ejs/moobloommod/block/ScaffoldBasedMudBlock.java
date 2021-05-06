@@ -102,7 +102,7 @@ import net.minecraft.world.WorldView;
 	      if (!world.isClient()) {
 	         world.getBlockTickScheduler().schedule(pos, this, 1);
 	      }
-	      return state; 
+	      return state;
 	   }
 
 	   public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
