@@ -202,7 +202,6 @@ public class MoobloomEntity extends CowEntity implements Shearable {
 						new ItemStack(this.getMoobType().flower.getBlock())));
 			}
 		}
-
 	}
 
 	@Override
@@ -228,8 +227,8 @@ public class MoobloomEntity extends CowEntity implements Shearable {
 		MoobloomEntity.Type type = this.getMoobType();
 		MoobloomEntity.Type type2 = passiveEntity.getMoobType();
 		MoobloomEntity.Type type4;
-		if (type == type2 && this.random.nextInt(1024) == 0) {
-			type4 = type == MoobloomEntity.Type.BLUE ? MoobloomEntity.Type.YELLOW : MoobloomEntity.Type.BLUE;
+		if (type == type2) {
+			type4 = type;
 		} else {
 			type4 = this.random.nextBoolean() ? type : type2;
 		}
@@ -266,7 +265,6 @@ public class MoobloomEntity extends CowEntity implements Shearable {
 			} if(MoobloomEntity.Type.PINK.name == name) {
 				return PINK;
 			}
-
 			return YELLOW;
 		}
 	}
