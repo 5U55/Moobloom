@@ -102,7 +102,7 @@ public class ScaffoldBasedMudBlock extends Block {
 
 	@Environment(EnvType.CLIENT)
 	public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-		int rand = random.nextInt(40);
+		int rand = random.nextInt(90);
 		if (rand == 1) {
 			if (!isWaterNearby(world, pos) && !world.hasRain(pos.up())) {
 				this.setToDirt(pos);
@@ -116,7 +116,6 @@ public class ScaffoldBasedMudBlock extends Block {
 		buf.writeIdentifier(new Identifier("minecraft", "dirt"));
 		ClientPlayNetworking.send(MobloomMod.SET_BLOCK_PACKET, buf);
 	}
-	
 
 	@SuppressWarnings("rawtypes")
 	private static boolean isWaterNearby(World world, BlockPos pos) {
@@ -152,9 +151,11 @@ public class ScaffoldBasedMudBlock extends Block {
 	}
 
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if (entity instanceof LivingEntity) {
+		if (!world.isClient() && entity instanceof LivingEntity) {
 			LivingEntity livingEntity = (LivingEntity) entity;
-			livingEntity.addStatusEffect(new StatusEffectInstance(ModItems.CAMO, 40));
+			if(!livingEntity.hasStatusEffect(ModItems.CAMO)) {
+				livingEntity.addStatusEffect(new StatusEffectInstance(ModItems.CAMO, 30));
+			}
 		}
 	}
 
