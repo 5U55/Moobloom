@@ -41,6 +41,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.ItemTags;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -137,6 +138,10 @@ public class MoobloomEntity extends CowEntity implements Shearable {
 		this.goalSelector.add(7, new LookAroundGoal(this));
 
 	}
+	
+	public boolean isBreedingItem(ItemStack stack) {
+	      return stack.getItem().isIn((Tag<Item>)ItemTags.FLOWERS);
+	   }
 
 	public static DefaultAttributeContainer.Builder createMoobAttributes() {
 		return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D)
@@ -216,7 +221,7 @@ public class MoobloomEntity extends CowEntity implements Shearable {
 	}
 
 	public MoobloomEntity.Type getMoobType() {
-		return MoobloomEntity.Type.fromName((String) this.dataTracker.get(TYPE));
+		return MoobloomEntity.Type.fromName(this.dataTracker.get(TYPE));
 	}
 
 	public MoobloomEntity createChild(ServerWorld serverWorld, PassiveEntity passiveEntity) {
